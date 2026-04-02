@@ -1,0 +1,16 @@
+// Exercise 2: Documentation
+/**
+ * Returns a greeting message for the given user.
+ *
+ * @param name The name of the user
+ * @return A personalized greeting
+ */
+public class Greeter {
+    public static String greetUser(String name) {
+        return "Hello, " + name + "!";
+    }
+
+    public static void main(String[] args) {
+        System.out.println(greetUser("Bianca"));
+    }
+}
