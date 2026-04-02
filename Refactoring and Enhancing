@@ -1,0 +1,21 @@
+// Exercise 5: Refactoring
+public class EvenCheck {
+    // Original version
+    public static boolean isEvenOriginal(int num) {
+        if (num % 2 == 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    // Refactored version
+    public static boolean isEven(int num) {
+        return num % 2 == 0;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(isEven(4)); // true
+        System.out.println(isEven(7)); // false
+    }
+}
