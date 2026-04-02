@@ -1,0 +1,74 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+class Task {
+    String description;
+    boolean done;
+
+    Task(String description) {
+        this.description = description;
+        this.done = false;
+    }
+
+    void markDone() {
+        this.done = true;
+    }
+
+    @Override
+    public String toString() {
+        return (done ? "[✔] " : "[ ] ") + description;
+    }
+}
+
+public class TaskManager {
+    public static void main(String[] args) {
+        ArrayList<Task> tasks = new ArrayList<>();
+        Scanner scanner = new Scanner(System.in);
+        boolean running = true;
+
+        while (running) {
+            System.out.println("\n--- Task Manager ---");
+            System.out.println("1. Add Task");
+            System.out.println("2. View Tasks");
+            System.out.println("3. Complete Task");
+            System.out.println("4. Exit");
+            System.out.print("Choose an option: ");
+
+            int choice = scanner.nextInt();
+            scanner.nextLine(); // consume newline
+
+            switch (choice) {
+                case 1:
+                    System.out.print("Enter task: ");
+                    String desc = scanner.nextLine();
+                    tasks.add(new Task(desc));
+                    break;
+
+                case 2:
+                    System.out.println("\nTasks:");
+                    for (int i = 0; i < tasks.size(); i++) {
+                        System.out.println((i + 1) + ". " + tasks.get(i));
+                    }
+                    break;
+
+                case 3:
+                    System.out.print("Enter task number: ");
+                    int num = scanner.nextInt();
+                    if (num > 0 && num <= tasks.size()) {
+                        tasks.get(num - 1).markDone();
+                    } else {
+                        System.out.println("Invalid number.");
+                    }
+                    break;
+
+                case 4:
+                    running = false;
+                    break;
+
+                default:
+                    System.out.println("Invalid choice.");
+            }
+        }
+        scanner.close();
+    }
+}
